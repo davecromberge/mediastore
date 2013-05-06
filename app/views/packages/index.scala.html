@@ -1,0 +1,28 @@
+@(packages: Seq[Package])(implicit flash: play.api.mvc.Flash)
+
+@main {
+    
+    <h1>Our packages</h1>
+
+    @flash.get("success").map { message =>
+        <div class="alert-message warning">
+            <strong>Done!</strong> @message
+        </div>
+    }
+
+    <table class="packages zebra-striped">
+      <thead>
+        <tr>
+          <th class="col header">Package name</th>
+        </tr>
+      </thead>
+       <tbody>
+        @packages.map { pack =>
+          <tr>
+            <td><a href="@routes.Packages.edit(pack.name)">@pack.name</a></td>
+          </tr>
+        }
+      </tbody>
+
+    </table>
+}

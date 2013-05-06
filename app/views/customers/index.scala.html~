@@ -1,0 +1,30 @@
+@(customers: Seq[Customer])(implicit flash: play.api.mvc.Flash)
+
+@main {
+    
+    <h1>Our customers</h1>
+
+    @flash.get("success").map { message =>
+        <div class="alert-message warning">
+            <strong>Done!</strong> @message
+        </div>
+    }
+
+    <table class="customers zebra-striped">
+      <thead>
+        <tr>
+          <th class="col header">Customer name</th>
+          <th class="col header">Customer package</th>
+        </tr>
+      </thead>
+       <tbody>
+        @customers.map { customer =>
+          <tr>
+            <td><a href="@routes.Customers.edit(customer.id.get)">@customer.name</a></td>
+            <td><a href="@routes.Packages.edit(customer.pack.get)">@customer.pack.name</a></td>
+          </tr>
+        }
+      </tbody>
+
+    </table>
+}

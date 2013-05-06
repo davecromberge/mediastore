@@ -1,0 +1,29 @@
+@(id: String, customerForm: Form[Customer])
+
+@import helper._
+
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.f) }
+
+@main {
+    
+    <h1>Edit computer</h1>
+    
+    @form(routes.Customers.update(id)) {
+        
+        <fieldset>
+            @inputText(customerForm("name"), '_label -> "Customer name")
+        </fieldset>
+        
+        <div class="actions">
+            <input type="submit" value="Save this customer" class="btn primary"> or 
+            <a href="@routes.Customers.index()" class="btn">Cancel</a> 
+        </div>
+        
+    }
+    
+    @form(routes.Customers.delete(id), 'class -> "topRight") {
+        <input type="submit" value="Delete this customer" class="btn danger">
+    }
+    
+}
+

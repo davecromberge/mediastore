@@ -1,0 +1,48 @@
+@(id: String, editForm: Form[Package])(implicit attributes: scala.concurrent.Future[Iterable[Attribute]])
+
+@import helper._
+
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.f) }
+
+@attributeField(field: Field, className: String = "field") = {
+  <div class="row">
+    @defining(field("name").value.getOrElse("")) { name => 
+    <div class="span4">
+      <label>@name</name>
+    </div>
+    <div class="span5">
+      @inputText(
+        field("value"),
+        '_class -> className,
+        '_label -> ""
+      )
+    </div>
+    }
+  </div>
+}
+
+@main {
+    
+    <h1>Edit package</h1>
+    
+    @form(routes.Packages.update(id)) {
+      <fieldset>
+        @inputText(editForm("name"), '_label -> "Package name")
+      </fieldset>
+      <fieldset>
+        <legend>About this package</legend>
+          @repeat(editForm("attributes")) { attribute =>
+            @attributeField(attribute)
+          }
+      </fieldset>
+      <div class="actions">
+          
+        <input type="submit" value="Save this package" class="btn primary">
+        <a href="@routes.Packages.index()" class="btn">Cancel</a> 
+      </div>
+    }
+    @form(routes.Packages.delete(id), 'class -> "topRight") {
+      <input type="submit" value="Delete this package" class="btn danger">
+    } 
+}
+

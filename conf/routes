@@ -1,0 +1,30 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                           controllers.Customers.index
+
+# Customers list
+GET     /customers                  controllers.Customers.index
+
+# Edit existing customer
+GET     /customers/:id              controllers.Customers.edit(id:String)
+POST    /customers/:id              controllers.Customers.update(id:String)
+
+# Delete a customer
+POST    /customers/:id/delete       controllers.Customers.delete(id:String)
+
+# Packages list
+GET     /packages                   controllers.Packages.index
+
+# Edit existing package
+GET     /packages/:id               controllers.Packages.edit(id:String)
+POST    /packages/:id               controllers.Packages.update(id:String)
+
+# Delete a customer
+POST    /packages/:id/delete        controllers.Packages.delete(id:String)
+
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)

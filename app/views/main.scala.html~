@@ -1,0 +1,24 @@
+@(content: Html)
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Media</title>
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/bootstrap.min.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+        <script src="@routes.Assets.at("javascripts/jquery-1.7.1.min.js")" type="text/javascript"></script>
+    </head>
+    <body>
+      <header class='topbar'>
+        <h1 class="fill">
+          <a href="@routes.Customers.index()">Media</a>
+        </h1>
+      </header>
+      <section id="main">
+        @content
+      </section>
+
+    </body>
+</html>

@@ -1,0 +1,57 @@
+@(id: String, editForm: Form[Customer])(implicit attributes: scala.concurrent.Future[Iterable[Attribute]])
+
+@import helper._
+
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.f) }
+
+@attributeField(field: Field, className: String = "field") = {
+  <div class="row">
+    @defining(field.name + ".name") { fieldName => 
+      <input type="hidden" name='@fieldName' value='@field("name").value.get'>  
+    } 
+    @defining(field.name + ".code") { fieldName => 
+      <input type="hidden" name='@fieldName' value='@field("code").value.get'>  
+    }
+    @defining(field("name").value.getOrElse("")) { name => 
+    <div class="span4">
+      <label>@name</name>
+    </div>
+    <div class="span5">
+      @inputText(
+        field("value"),
+        '_class -> className,
+        '_label -> ""
+      )
+    </div>
+    }
+  </div>
+}
+
+@main {
+    
+    <h1>Edit customer</h1>
+    
+    @form(routes.Customers.update(id)) {
+      <fieldset>
+        @inputText(editForm("name"), '_label -> "Customer name")
+      </fieldset>
+      <fieldset>
+        @inputText(editForm("pack"), '_label -> "Customer package")
+      </fieldset>
+      <fieldset>
+        <legend>About this customer</legend>
+          @repeat(editForm("attributes")) { attribute =>
+            @attributeField(attribute)
+          }
+      </fieldset>
+      <div class="actions">
+          
+        <input type="submit" value="Save this customer" class="btn primary">
+        <a href="@routes.Customers.index()" class="btn">Cancel</a> 
+      </div>
+    }
+    @form(routes.Customers.delete(id), 'class -> "topRight") {
+      <input type="submit" value="Delete this customer" class="btn danger">
+    } 
+}
+
