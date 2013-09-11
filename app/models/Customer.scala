@@ -1,9 +1,6 @@
 package models
 
-import play.api._
-
 import reactivemongo.bson._
-import reactivemongo.bson.handlers._
 
 case class Customer(
   id: Option[String],
@@ -14,17 +11,16 @@ case class Customer(
 
 object Customer {
 
-  implicit object CustomerBSONReader extends BSONReader[Customer] {
-    def fromBSON(document: BSONDocument) :Customer = {
-      require(document != null)
+  implicit object CustomerBSONReader extends BSONDocumentReader[Customer] {
+    def read(buffer: BSONDocument): Customer = {
+      require(buffer != null)
 
-      val doc = document.toTraversable
       Customer(
-        Option(doc.getAs[BSONObjectID]("_id").get.stringify),
-        doc.getAs[BSONString]("name").get.value,
-        doc.getAs[BSONString]("pack").map(_.value),
-        doc.getAs[TraversableBSONArray]("attributes").map(attributes => 
-          attributes.toList.map(_.asInstanceOf[BSONDocument].toTraversable)
+        Option(buffer.getAs[BSONObjectID]("_id").get.stringify),
+        buffer.getAs[BSONString]("name").get.value,
+        buffer.getAs[BSONString]("pack").map(_.value),
+        buffer.getAs[BSONArray]("attributes").map(attributes => 
+          attributes.toList.map(_.asInstanceOf[BSONDocument])
                            .map(attrDoc =>
                                   Attribute(attrDoc.getAs[BSONString]("code").get.value,
                                             attrDoc.getAs[BSONString]("name").get.value,
@@ -35,16 +31,17 @@ object Customer {
     }
   }
 
-  implicit object CustomerBSONWriter extends BSONWriter[Customer] {
-    def toBSON(customer: Customer) = {
+  implicit object CustomerBSONWriter extends BSONDocumentWriter[Customer] {
+    def write(customer: Customer): BSONDocument = {
       require(customer != null)
 
-      var attributes = new AppendableBSONArray
-      customer.attributes.get.map (attr =>
-        attributes += BSONDocument(
-          "code" -> BSONString(attr.code),
-          "name" -> BSONString(attr.name),
-          "value" -> BSONString(attr.value.getOrElse("")))
+      var attributes = BSONArray(
+        customer.attributes.get.map (attr =>
+          BSONDocument(
+            "code" -> BSONString(attr.code),
+            "name" -> BSONString(attr.name),
+            "value" -> BSONString(attr.value.getOrElse("")))
+        )
       )
 
       BSONDocument(

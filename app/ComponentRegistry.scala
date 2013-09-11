@@ -1,7 +1,6 @@
 package app
 
 import scala.concurrent.{ExecutionContext}
-
 import core._
 import repositories._
 

@@ -1,28 +1,20 @@
 package models
 
-import play.api._
-
 import reactivemongo.bson._
-import reactivemongo.bson.handlers._
 
-case class Package(
-  id: Option[String],
-  name: String,
-  attributes: Option[Seq[Attribute]]
-)
+case class Package(id: Option[String], name: String, attributes: Option[Seq[Attribute]])
 
 object Package {
 
-  implicit object PackageBSONReader extends BSONReader[Package] {
-    def fromBSON(document: BSONDocument): Package = {
-      require(document != null)
-
-      val doc = document.toTraversable
+  implicit object PackageBSONReader extends BSONDocumentReader[Package] {
+    def read(buffer: BSONDocument): Package = {
+      require(buffer != null)
+      
       Package(
-        Option(doc.getAs[BSONObjectID]("_id").get.stringify),
-        doc.getAs[BSONString]("name").get.value,
-        doc.getAs[TraversableBSONArray]("attributes").map(attributes => 
-          attributes.toList.map(_.asInstanceOf[BSONDocument].toTraversable)
+        Option(buffer.getAs[BSONObjectID]("_id").get.stringify),
+        buffer.getAs[BSONString]("name").get.value,
+        buffer.getAs[BSONArray]("attributes").map(attributes => 
+          attributes.toList.map(_.asInstanceOf[BSONDocument])
                            .map(attrDoc =>
                                   Attribute(attrDoc.getAs[BSONString]("code").get.value,
                                             attrDoc.getAs[BSONString]("name").get.value,
@@ -33,16 +25,17 @@ object Package {
     }
   }
 
-  implicit object PackageBSONWriter extends BSONWriter[Package] {
-    def toBSON(pack: Package) = {
+  implicit object PackageBSONWriter extends BSONDocumentWriter[Package] {
+    def write(pack: Package): BSONDocument = {
       require(pack != null)
 
-      var attributes = new AppendableBSONArray
-      pack.attributes.get.map (attr =>
-        attributes += BSONDocument(
-          "code" -> BSONString(attr.code),
-          "name" -> BSONString(attr.name),
-          "value" -> BSONString(attr.value.getOrElse("")))
+      var attributes = BSONArray(
+        pack.attributes.get.map (attr =>
+          BSONDocument(
+            "code" -> BSONString(attr.code),
+            "name" -> BSONString(attr.name),
+            "value" -> BSONString(attr.value.getOrElse("")))
+        )
       )
 
       BSONDocument(

@@ -8,13 +8,10 @@ import com.wcohen.ss.tokens._
 
 /*
   String similarity attempts to examine the similarity of two strings = apple ~ aple - against a specified threshold.
-
   This caters for spelling errors as well as related strings. The second string library is used, as basic Levenshtein distance measures are insufficient.
-
   Although Jaro-Winkler is used here, the token based SoftTFDIF is preferable.
-
   The library supports the concept of a learner function allowing supervisory learning.
-
+  
   http://secondstring.sourceforge.net/doc/iiweb03.pdf
 */
 

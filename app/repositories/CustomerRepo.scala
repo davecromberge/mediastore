@@ -1,28 +1,21 @@
 package repositories
 
-import app._
-import core._
 import models._
+import app.ComponentRegistry
+import core.RecordMatcher
 
-import play.api._
 import play.api.Play.current
-import play.modules.reactivemongo._ 
-
+import play.api.libs.concurrent.Execution.Implicits._
 import reactivemongo.api._ 
 import reactivemongo.bson._
-import reactivemongo.core.commands._
-import reactivemongo.bson.handlers.DefaultBSONHandlers.{ DefaultBSONReaderHandler, DefaultBSONDocumentWriter }
-
-import scala.concurrent._
+import reactivemongo.core.commands.LastError
+import scala.concurrent.Future
 
 /*
   Makes use of reactive mongo plugin to return future results.
   
   Futures provide a nice way to reason about performing many operations in parallel in an efficient and non-blocking way
-
   http://docs.scala-lang.org/overviews/core/futures.html
-
-  The reactive mongo plugin also allows a cursor to be returned for consumers (reactive iteratees)
 */
 
 trait CustomerComponent {
@@ -56,12 +49,11 @@ trait CustomerComponent {
       require(!customer.name.isEmpty)
 
       doMatching(customer).flatMap { bestMatch =>
-        
-        val modifier = BSONDocument(
-          "$set" -> BSONDocument(
+         val modifier = BSONDocument(
+            "$set" -> BSONDocument(
               "name" -> BSONString(customer.name),
               "pack" -> BSONString(bestMatch.name)))
-        collection.update(BSONDocument("_id" -> new BSONObjectID(id)), modifier)
+         collection.update(BSONDocument("_id" -> new BSONObjectID(id)), modifier)
       }
     }
 

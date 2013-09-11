@@ -7,15 +7,6 @@ import models._
 import repositories._
 import scala.concurrent._
 
-/* Similarity Measures for Categorical Data: A Comparative Evaluation
-
-   http://www.siam.org/proceedings/datamining/2008/dm08_22_Boriah.pdf
-
-   The different similarity measures attempt to use the data to weight mismatches and matches.
-
-   The complementary Lin/Lin1 metrics give higher weight to matches on frequent values.
-*/
-
 case class Criteria(
   attr: Attribute, valuesAreSimilar: Boolean, 
   v1: Option[String], v2: Option[String], 

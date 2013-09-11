@@ -1,7 +1,6 @@
 package models
 
 import reactivemongo.bson._
-import reactivemongo.bson.handlers._
 
 case class Attribute(
   code: String, 
@@ -11,23 +10,20 @@ case class Attribute(
 
 object Attribute {
 
-  implicit object AttributeBSONReader extends BSONReader[Attribute] {
-    def fromBSON(document: BSONDocument) :Attribute = {
-      require(document != null)
-
-      val doc = document.toTraversable
+  implicit object AttributeBSONReader extends BSONDocumentReader[Attribute] {
+    def read(buffer: BSONDocument): Attribute = {
+      require(buffer != null)
       Attribute(
-        doc.getAs[BSONString]("code").get.value,
-        doc.getAs[BSONString]("name").get.value,
+        buffer.getAs[BSONString]("code").get.value,
+        buffer.getAs[BSONString]("name").get.value,
         None
       )
     }
   }
 
-  implicit object AttributeBSONWriter extends BSONWriter[Attribute] {
-    def toBSON(attribute: Attribute) = {
+  implicit object AttributeBSONWriter extends BSONDocumentWriter[Attribute] {
+    def write(attribute: Attribute): BSONDocument = {
       require(attribute != null)
-
       BSONDocument(
         "code" -> BSONString(attribute.code),
         "name" -> BSONString(attribute.name)

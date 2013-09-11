@@ -6,12 +6,6 @@ import app._
 import models._
 import repositories._
 import scala.concurrent._
-/*
-  makes use of the categorical matching function as well as the string similarity function defined in the component registry -
-
-  these can be learned using a supervisory approach to produce different measures over time.
-
-*/
 
 class RecordMatcher(customer: Customer, packages: Iterable[Package]) extends ComponentRegistry {
    implicit val ec: ExecutionContext = ExecutionContext.Implicits.global

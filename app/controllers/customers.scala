@@ -1,26 +1,19 @@
 package controllers
 
-import play.api._
-import play.api.mvc._
-import play.api.data._
-import play.api.data.format.Formats._
-import play.api.data.Forms._
-import play.api.data.validation.Constraints._
-import play.api.libs.json._
-import play.api.Play.current
-import play.modules.reactivemongo._
-import scala.concurrent.{Future}
-
-import app._
-import core._
+import app.ComponentRegistry
 import views._
 import models._
 
+import play.api._
+import play.api.mvc._
+import play.api.data._
+import play.api.data.Forms._
+import play.api.data.format.Formats._
+import play.api.data.validation.Constraints._
+import play.api.libs.concurrent.Execution.Implicits._
+import scala.concurrent.Future
 
-object Customers extends 
-  Controller with 
-  MongoController with 
-  ComponentRegistry {
+object Customers extends Controller with ComponentRegistry {
  
   def index = Action { implicit request =>
     Async {
@@ -85,7 +78,6 @@ object Customers extends
   )
 
   val Home = Redirect(routes.Customers.index)
-  
   implicit lazy val attributes: Future[Iterable[Attribute]] = attributeRepo.all
 }
 

@@ -1,30 +1,18 @@
 package repositories
 
 import play.api.Play.current
+import play.api.libs.concurrent.Execution.Implicits._
 import play.modules.reactivemongo._
-
-import reactivemongo.api._
 import reactivemongo.bson._
-import reactivemongo.bson.handlers._
-import reactivemongo.core.commands._
-import scala.concurrent.{ExecutionContext, Future}
-import scala.util.Properties
-
-/*
-  ReactiveMongo is a scala driver that provides fully non-blocking and asynchronous I/O operations.
-
-  http://reactivemongo.org/
-
-*/
+import reactivemongo.core.commands.LastError
+import scala.concurrent.Future
 
 trait MongoRepository[T] {
-  implicit val reader: BSONReader[T]
-  implicit val writer: BSONWriter[T]
-  implicit val ec: ExecutionContext = ExecutionContext.Implicits.global
+  implicit val reader: BSONReader[T, T]
+  implicit val writer: BSONWriter[T, T]
 
-  val mongoLabUri = Properties.envOrElse("MONGOLAB_URI", "127.0.0.1:27017")
-  val connection = MongoConnection(List(mongoLabUri))
-  val db = connection("media-monkey")
+  val connection = ReactiveMongoPlugin.connection
+  val db = ReactiveMongoPlugin.db
   def collection: reactivemongo.api.Collection
 }
 

@@ -1,16 +1,14 @@
 package repositories
 
 import models._
+import app.ComponentRegistry
 
 import play.api.Play.current
-import play.modules.reactivemongo._ 
-
+import play.api.libs.concurrent.Execution.Implicits._
 import reactivemongo.api._ 
 import reactivemongo.bson._
-import reactivemongo.core.commands._
-import reactivemongo.bson.handlers.DefaultBSONHandlers.{ DefaultBSONReaderHandler, DefaultBSONDocumentWriter }
-
-import scala.concurrent.{ExecutionContext, Future}
+import reactivemongo.core.commands.LastError
+import scala.concurrent.Future
 
 trait AttributeComponent {
   class AttributeRepo extends MongoRepository[Attribute] with Repository[Attribute] {

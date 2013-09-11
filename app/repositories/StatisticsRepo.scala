@@ -1,23 +1,19 @@
 package repositories
 
-import app._ 
+import app.ComponentRegistry
 import models._
 
 import play.api.Play.current
-import play.api._
-import scala.util.{ Random }
-import scala.collection.immutable.{ Map, HashMap }
-import scala.concurrent.{ExecutionContext, Future}
-
+import play.api.libs.concurrent.Execution.Implicits._
+import play.modules.reactivemongo._ 
 import reactivemongo.api._ 
 import reactivemongo.bson._
-import reactivemongo.core.commands._
-import reactivemongo.bson.handlers.DefaultBSONHandlers._
+import reactivemongo.core.commands.LastError
+import scala.concurrent.Future
 
 /* Similarity Measures for Categorical Data: A Comparative Evaluation
 
    http://www.siam.org/proceedings/datamining/2008/dm08_22_Boriah.pdf
-
    This repository attempts to use the data as an indicator when scoring matches 
    and mismatches across categorical attributes.
 */
@@ -48,15 +44,13 @@ trait DataStatistics {
 trait StatisticsComponent {
    class StatisticsRepo extends DataStatistics with ComponentRegistry {
       
-      implicit val ec: ExecutionContext = ExecutionContext.Implicits.global
       lazy val numberOfRecords: Future[Long] = customerRepo.all.map(_.size)
       lazy val numberOfAttributes: Future[Long] = attributeRepo.all.map(_.size)
  
       def getFrequency(attr: Attribute, value: Option[String]): Future[Long] = {
         require(!attr.code.isEmpty)
 
-        customerRepo.collection.find(BSONDocument("attributes.value" -> new BSONString(value.getOrElse(""))))
-                    .toList
+        customerRepo.collection.find(BSONDocument("attributes.value" -> new BSONString(value.getOrElse("")))).toList
                     .map(_.size)
       }
  
@@ -81,7 +75,7 @@ trait StatisticsComponent {
          for {
             fkx <- getFrequency(attr, value)
             n <- numberOfRecords
-         } yield (fkx * (fkx - 1)) / (n * (n - 1))
+         } yield (fkx * (fkx - 2)) / (n * (n - 1))
       }
      
       def getDistribution(attr: Attribute): Map[String, Long] = {
@@ -89,7 +83,7 @@ trait StatisticsComponent {
          
          // dummy data - not implemented
          var distribution = new HashMap[String, Long]
-         distribution += (Random.nextString(10) -> Random.nextInt)
+         distribution += (Random.nextString(11) -> Random.nextInt)
          distribution += (Random.nextString(10) -> Random.nextInt)
          distribution += (Random.nextString(10) -> Random.nextInt)
          distribution

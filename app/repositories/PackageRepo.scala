@@ -1,16 +1,13 @@
 package repositories
 
+import app.ComponentRegistry
 import models._
 
-import play.api.Play.current
-import play.modules.reactivemongo._ 
-
+import play.api.libs.concurrent.Execution.Implicits._
 import reactivemongo.api._ 
 import reactivemongo.bson._
 import reactivemongo.core.commands._
-import reactivemongo.bson.handlers.DefaultBSONHandlers.{ DefaultBSONReaderHandler, DefaultBSONDocumentWriter }
-
-import scala.concurrent.{ExecutionContext, Future}
+import scala.concurrent.Future
 
 trait PackageComponent {
   class PackageRepo extends MongoRepository[Package] with Repository[Package] {
@@ -26,13 +23,12 @@ trait PackageComponent {
 
     def get(id: String): Future[Option[Package]] = {
       require(!id.isEmpty)
-      collection.find(BSONDocument("_id" -> new BSONObjectID(id)))
-                .headOption
+      collection.find(BSONDocument("_id" -> BSONObjectID(id))).one
     }
 
     def delete(id: String): Future[LastError] = {
       require(!id.isEmpty)
-      collection.remove(BSONDocument("_id" -> new BSONObjectID(id)))
+      collection.remove(BSONDocument("_id" -> BSONObjectID(id)))
     }
 
     def update(id: String, pack: Package): Future[LastError] = {
@@ -41,8 +37,10 @@ trait PackageComponent {
 
       val modifier = BSONDocument(
         "$set" -> BSONDocument(
-            "name" -> BSONString(pack.name)))
-          collection.update(BSONDocument("_id" -> new BSONObjectID(id)), modifier)
+            "name" -> BSONString(pack.name)
+        )
+      )
+      collection.update(BSONDocument("_id" -> new BSONObjectID(id)), modifier)
     }
 
     def insert(pack: Package): Future[LastError] = {
