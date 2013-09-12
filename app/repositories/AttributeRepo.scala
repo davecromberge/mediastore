@@ -18,13 +18,13 @@ trait AttributeComponent {
     override implicit val writer = Attribute.AttributeBSONWriter
 
     def all: Future[List[Attribute]] = {
-      collection.find(BSONDocument()).toList
+      collection.find(BSONDocument()).cursor[Attribute].toList
     }
 
     def get(code: String): Future[Option[Attribute]] = {
       require(!code.isEmpty)
       collection.find(BSONDocument("code" -> new BSONString(code)))
-                .headOption
+                .one[Attribute]
     }
 
     def delete(code: String): Future[LastError] = {

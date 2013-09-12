@@ -8,8 +8,8 @@ import reactivemongo.core.commands.LastError
 import scala.concurrent.Future
 
 trait MongoRepository[T] {
-  implicit val reader: BSONReader[T, T]
-  implicit val writer: BSONWriter[T, T]
+  implicit val reader: BSONDocumentReader[T]
+  implicit val writer: BSONDocumentWriter[T]
 
   val connection = ReactiveMongoPlugin.connection
   val db = ReactiveMongoPlugin.db

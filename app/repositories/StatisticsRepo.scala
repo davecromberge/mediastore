@@ -10,7 +10,8 @@ import reactivemongo.api._
 import reactivemongo.bson._
 import reactivemongo.core.commands.LastError
 import scala.concurrent.Future
-
+import scala.util.Random
+      
 /* Similarity Measures for Categorical Data: A Comparative Evaluation
 
    http://www.siam.org/proceedings/datamining/2008/dm08_22_Boriah.pdf
@@ -50,7 +51,9 @@ trait StatisticsComponent {
       def getFrequency(attr: Attribute, value: Option[String]): Future[Long] = {
         require(!attr.code.isEmpty)
 
-        customerRepo.collection.find(BSONDocument("attributes.value" -> new BSONString(value.getOrElse("")))).toList
+        customerRepo.collection.find(BSONDocument("attributes.value" -> new BSONString(value.getOrElse(""))))
+                    .cursor[BSONDocument]
+                    .toList
                     .map(_.size)
       }
  
@@ -80,13 +83,12 @@ trait StatisticsComponent {
      
       def getDistribution(attr: Attribute): Map[String, Long] = {
          require(!attr.code.isEmpty)
-         
          // dummy data - not implemented
-         var distribution = new HashMap[String, Long]
-         distribution += (Random.nextString(11) -> Random.nextInt)
-         distribution += (Random.nextString(10) -> Random.nextInt)
-         distribution += (Random.nextString(10) -> Random.nextInt)
-         distribution
+         Map(
+            Random.nextString(11) -> Random.nextInt, 
+            Random.nextString(12) -> Random.nextInt, 
+            Random.nextString(13) -> Random.nextInt
+         )
       }
    }
 }

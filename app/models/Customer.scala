@@ -20,7 +20,7 @@ object Customer {
         buffer.getAs[BSONString]("name").get.value,
         buffer.getAs[BSONString]("pack").map(_.value),
         buffer.getAs[BSONArray]("attributes").map(attributes => 
-          attributes.toList.map(_.asInstanceOf[BSONDocument])
+          attributes.values.map(_.asInstanceOf[BSONDocument])
                            .map(attrDoc =>
                                   Attribute(attrDoc.getAs[BSONString]("code").get.value,
                                             attrDoc.getAs[BSONString]("name").get.value,

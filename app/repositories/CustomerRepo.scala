@@ -30,13 +30,15 @@ trait CustomerComponent {
 
     def all: Future[List[Customer]] = {
       val query = BSONDocument()
-      collection.find(query).toList
+      collection.find(query)
+                .cursor[Customer]
+                .toList
     }
 
     def get(id: String): Future[Option[Customer]] = {
       require(!id.isEmpty)
       collection.find(BSONDocument("_id" -> new BSONObjectID(id)))
-                .headOption
+                .one[Customer]
     }
 
     def delete(id: String): Future[LastError] = {

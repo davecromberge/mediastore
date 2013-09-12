@@ -1,6 +1,0 @@
-include "application.conf"                                        
-
-mongodb.default.db="heroku_app9063774"
-mongodb.default.host="ds041377.mongolab.com"
-mongodb.default.port=41377 \
-mongodb.default.user="heroku_app9063774"

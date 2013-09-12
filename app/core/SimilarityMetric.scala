@@ -24,7 +24,7 @@ object JaroWinkler extends SimilarityMetric {
     require(s1.isDefined)
     require(s2.isDefined)
 
-    val tokenizer = new SimpleTokenizer(false,true)
+    val tokenizer = new SimpleTokenizer(false, true)
     val distance = new JaroWinkler
     distance.score(s1.getOrElse(""), s2.getOrElse(""))
   }

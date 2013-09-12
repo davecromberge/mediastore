@@ -19,7 +19,7 @@
        <tbody>
         @packages.map { pack =>
           <tr>
-            <td><a href="@routes.Packages.edit(pack.name)">@pack.name</a></td>
+            <td><a href="@routes.Packages.edit(pack.id.get)">@pack.name</a></td>
           </tr>
         }
       </tbody>

@@ -6,6 +6,7 @@ import app._
 import models._
 import repositories._
 import scala.concurrent._
+import play.api.libs.concurrent.Execution.Implicits._
 
 case class Criteria(
   attr: Attribute, valuesAreSimilar: Boolean, 
@@ -13,15 +14,10 @@ case class Criteria(
   xs: Iterable[Attribute], ys: Iterable[Attribute])
  
 trait Metric extends ComponentRegistry {
-
-   implicit val ec: ExecutionContext = ExecutionContext.Implicits.global
-   
    def calculate(criteria: Criteria): Future[BigDecimal]
-
 }
  
 trait CategoricalMetric extends Metric {
-   
    def weight(criteria: Criteria): Future[BigDecimal] = {
      statsRepo.numberOfAttributes.map { d =>
        assume(d >= 0)

@@ -24,13 +24,14 @@ object Packages extends Controller with ComponentRegistry {
     }
   }
 
-  def edit(name: String) = Action {
+  def edit(id: String) = Action {
     Async {
-      packageRepo.all.map { packages => 
-        packages.find(_.name == name).map { pack =>
-            Logger.debug("Edit page shown for package with " + pack.attributes.size + " attributes.")
-            Ok(html.packages.edit(pack.id.get, form.fill(pack)))
-        }.getOrElse(NotFound)
+      packageRepo.get(id).map { 
+        case Some(pack) =>
+          Logger.debug("Edit page shown for package with " + pack.attributes.size + " attributes.")
+          Ok(html.packages.edit(pack.id.get, form.fill(pack)))
+        case None => 
+          NotFound
       }
     }
   }

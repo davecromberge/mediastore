@@ -18,12 +18,13 @@ trait PackageComponent {
 
     def all: Future[List[Package]] = {
       val query = BSONDocument()
-      collection.find(query).toList
+      collection.find(query).cursor[Package].toList
     }
 
     def get(id: String): Future[Option[Package]] = {
       require(!id.isEmpty)
-      collection.find(BSONDocument("_id" -> BSONObjectID(id))).one
+      collection.find(BSONDocument("_id" -> BSONObjectID(id)))
+                .one[Package]
     }
 
     def delete(id: String): Future[LastError] = {

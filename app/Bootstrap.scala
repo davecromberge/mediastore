@@ -9,12 +9,10 @@ import app._
 import core._
 import models._
 import repositories._
+import play.api.libs.concurrent.Execution.Implicits._
 
 
 object Bootstrap extends ComponentRegistry {
-
-  implicit val ec: ExecutionContext = ExecutionContext.Implicits.global
-
   def init: Unit = {
     blocking {
       customerRepo.all.map(customers => 
@@ -58,7 +56,7 @@ object Bootstrap extends ComponentRegistry {
           new RecordMatcher(customer, packages).findBestMatch
                                                .map { pack =>
                                                       println("Found package " + pack.name + " for customer " + customer.name)
-                                                    }
+                                               }
         }
       }
     }

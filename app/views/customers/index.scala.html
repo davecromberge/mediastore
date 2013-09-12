@@ -21,7 +21,7 @@
         @customers.map { customer =>
           <tr>
             <td><a href="@routes.Customers.edit(customer.id.get)">@customer.name</a></td>
-            <td><a href="@routes.Packages.edit(customer.pack.get)">@customer.pack.getOrElse("Unassigned")</a></td>
+            <td>@customer.pack.getOrElse("Unassigned")</td>
           </tr>
         }
       </tbody>
