@@ -17,9 +17,8 @@ class RecordMatcher(customer: Customer, packages: Iterable[Package]) extends Com
        packages.map { p => 
           score(customer.attributes.get, p.attributes.get, p)
        }.toSeq
-     ).map { packageScores => {
+     ).map { packageScores => 
               packageScores.maxBy { case (score, pack) => score } ._2
-        }
      } 
    }
  

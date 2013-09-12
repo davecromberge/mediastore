@@ -65,3 +65,738 @@ Edit page shown for package with 1 attributes.
 2013-09-12 16:54:25,232 - [DEBUG] - from application in play-akka.actor.default-dispatcher-5 
 Edit page shown for customer with 1 attributes.
 
+2013-09-12 17:03:45,190 - [INFO] - from application in play-internal-execution-context-8 
+Application shutdown...
+
+2013-09-12 17:03:45,191 - [INFO] - from application in play-internal-execution-context-8 
+ReactiveMongoPlugin stops, closing connections...
+
+2013-09-12 17:03:45,231 - [INFO] - from application in ForkJoinPool-1-worker-1 
+ReactiveMongo Connections stopped. [Success(Closed)]
+
+2013-09-12 17:03:45,251 - [DEBUG] - from play in play-internal-execution-context-8 
+Plugin [play.api.cache.EhCachePlugin] is disabled
+
+2013-09-12 17:03:45,273 - [INFO] - from application in play-internal-execution-context-8 
+ReactiveMongoPlugin starting...
+
+2013-09-12 17:03:45,274 - [INFO] - from application in play-internal-execution-context-8 
+ReactiveMongoPlugin successfully started with db 'media-monkey'! Servers:
+		[localhost:27017]
+
+2013-09-12 17:03:45,320 - [INFO] - from play in play-internal-execution-context-8 
+Application started (Dev)
+
+2013-09-12 17:03:45,454 - [DEBUG] - from application in play-akka.actor.default-dispatcher-13 
+Index page shown for 50 customers.
+
+2013-09-12 17:03:56,014 - [DEBUG] - from application in play-akka.actor.default-dispatcher-15 
+Index page shown for 50 customers.
+
+2013-09-12 17:03:56,061 - [DEBUG] - from application in play-akka.actor.default-dispatcher-14 
+Index page shown for 50 customers.
+
+2013-09-12 17:03:57,719 - [DEBUG] - from application in play-akka.actor.default-dispatcher-2 
+Edit page shown for customer with 1 attributes.
+
+2013-09-12 17:03:58,777 - [ERROR] - from application in play-internal-execution-context-6 
+
+
+! @6fhpm2b0p - Internal server error, for (POST) [/customers/c4d7d8bd] ->
+
+play.api.Application$$anon$1: Execution exception[[UnsupportedOperationException: empty.maxBy]]
+	at play.api.Application$class.handleError(Application.scala:289) ~[play_2.10.jar:2.1.3]
+	at play.api.DefaultApplication.handleError(Application.scala:383) [play_2.10.jar:2.1.3]
+	at play.core.server.netty.PlayDefaultUpstreamHandler$$anonfun$play$core$server$netty$PlayDefaultUpstreamHandler$$handle$1$1.apply(PlayDefaultUpstreamHandler.scala:143) [play_2.10.jar:2.1.3]
+	at play.core.server.netty.PlayDefaultUpstreamHandler$$anonfun$play$core$server$netty$PlayDefaultUpstreamHandler$$handle$1$1.apply(PlayDefaultUpstreamHandler.scala:139) [play_2.10.jar:2.1.3]
+	at play.api.libs.concurrent.PlayPromise$$anonfun$extend1$1.apply(Promise.scala:113) [play_2.10.jar:2.1.3]
+	at play.api.libs.concurrent.PlayPromise$$anonfun$extend1$1.apply(Promise.scala:113) [play_2.10.jar:2.1.3]
+	at play.api.libs.concurrent.PlayPromise$$anonfun$extend$1$$anonfun$apply$1.apply(Promise.scala:104) [play_2.10.jar:2.1.3]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24) [scala-library.jar:na]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24) [scala-library.jar:na]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(Unknown Source) [na:1.6.0_22]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.6.0_22]
+	at java.lang.Thread.run(Unknown Source) [na:1.6.0_22]
+java.lang.UnsupportedOperationException: empty.maxBy
+	at scala.collection.TraversableOnce$class.maxBy(TraversableOnce.scala:209) ~[scala-library.jar:na]
+	at scala.collection.AbstractTraversable.maxBy(Traversable.scala:105) ~[scala-library.jar:na]
+	at core.RecordMatcher$$anonfun$findBestMatch$2.apply(RecordMatcher.scala:21) ~[classes/:na]
+	at core.RecordMatcher$$anonfun$findBestMatch$2.apply(RecordMatcher.scala:20) ~[classes/:na]
+	at scala.concurrent.Future$$anonfun$map$1.liftedTree2$1(Future.scala:253) ~[scala-library.jar:na]
+	at scala.concurrent.Future$$anonfun$map$1.apply(Future.scala:249) ~[scala-library.jar:na]
+	at scala.concurrent.Future$$anonfun$map$1.apply(Future.scala:249) ~[scala-library.jar:na]
+	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:29) ~[scala-library.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinTask$AdaptedRunnableAction.exec(ForkJoinTask.java:1417) ~[scala-library.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:262) ~[scala-library.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinPool$WorkQueue.pollAndExecAll(ForkJoinPool.java:915) ~[scala-library.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:980) ~[scala-library.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1478) ~[scala-library.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:104) ~[scala-library.jar:na]
+
+2013-09-12 17:04:05,597 - [DEBUG] - from application in play-akka.actor.default-dispatcher-2 
+Index page shown for 50 customers.
+
+2013-09-12 17:05:02,882 - [INFO] - from application in play-internal-execution-context-8 
+Application shutdown...
+
+2013-09-12 17:05:02,883 - [INFO] - from application in play-internal-execution-context-8 
+ReactiveMongoPlugin stops, closing connections...
+
+2013-09-12 17:05:02,903 - [INFO] - from application in ForkJoinPool-1-worker-15 
+ReactiveMongo Connections stopped. [Success(Closed)]
+
+2013-09-12 17:05:02,928 - [DEBUG] - from play in play-internal-execution-context-8 
+Plugin [play.api.cache.EhCachePlugin] is disabled
+
+2013-09-12 17:05:02,945 - [INFO] - from application in play-internal-execution-context-8 
+ReactiveMongoPlugin starting...
+
+2013-09-12 17:05:02,946 - [INFO] - from application in play-internal-execution-context-8 
+ReactiveMongoPlugin successfully started with db 'media-monkey'! Servers:
+		[localhost:27017]
+
+2013-09-12 17:05:02,978 - [INFO] - from play in play-internal-execution-context-8 
+Application started (Dev)
+
+2013-09-12 17:05:03,035 - [DEBUG] - from application in play-akka.actor.default-dispatcher-20 
+Index page shown for 50 customers.
+
+2013-09-12 17:05:27,880 - [DEBUG] - from application in play-akka.actor.default-dispatcher-23 
+Index page shown for 50 customers.
+
+2013-09-12 17:07:14,056 - [INFO] - from application in play-internal-execution-context-1 
+Application shutdown...
+
+2013-09-12 17:07:14,056 - [INFO] - from application in play-internal-execution-context-1 
+ReactiveMongoPlugin stops, closing connections...
+
+2013-09-12 17:07:14,068 - [INFO] - from application in ForkJoinPool-1-worker-15 
+ReactiveMongo Connections stopped. [Success(Closed)]
+
+2013-09-12 17:07:14,094 - [DEBUG] - from play in play-internal-execution-context-1 
+Plugin [play.api.cache.EhCachePlugin] is disabled
+
+2013-09-12 17:07:14,117 - [INFO] - from application in play-internal-execution-context-1 
+ReactiveMongoPlugin starting...
+
+2013-09-12 17:07:14,117 - [INFO] - from application in play-internal-execution-context-1 
+ReactiveMongoPlugin successfully started with db 'media-monkey'! Servers:
+		[localhost:27017]
+
+2013-09-12 17:07:14,154 - [INFO] - from play in play-internal-execution-context-1 
+Application started (Dev)
+
+2013-09-12 17:07:14,240 - [DEBUG] - from application in play-akka.actor.default-dispatcher-30 
+Index page shown for 100 customers.
+
+2013-09-12 17:08:32,548 - [INFO] - from application in play-internal-execution-context-2 
+Application shutdown...
+
+2013-09-12 17:08:32,549 - [INFO] - from application in play-internal-execution-context-2 
+ReactiveMongoPlugin stops, closing connections...
+
+2013-09-12 17:08:32,564 - [INFO] - from application in ForkJoinPool-1-worker-15 
+ReactiveMongo Connections stopped. [Success(Closed)]
+
+2013-09-12 17:08:32,582 - [DEBUG] - from play in play-internal-execution-context-2 
+Plugin [play.api.cache.EhCachePlugin] is disabled
+
+2013-09-12 17:08:32,598 - [INFO] - from application in play-internal-execution-context-2 
+ReactiveMongoPlugin starting...
+
+2013-09-12 17:08:32,599 - [INFO] - from application in play-internal-execution-context-2 
+ReactiveMongoPlugin successfully started with db 'media-monkey'! Servers:
+		[localhost:27017]
+
+2013-09-12 17:08:32,631 - [INFO] - from play in play-internal-execution-context-2 
+Application started (Dev)
+
+2013-09-12 17:08:32,658 - [DEBUG] - from application in play-akka.actor.default-dispatcher-35 
+Index page shown for 0 customers.
+
+2013-09-12 17:08:32,740 - [DEBUG] - from application in play-akka.actor.default-dispatcher-36 
+Index page shown for 0 customers.
+
+2013-09-12 17:08:58,430 - [INFO] - from application in play-internal-execution-context-1 
+Application shutdown...
+
+2013-09-12 17:08:58,431 - [INFO] - from application in play-internal-execution-context-1 
+ReactiveMongoPlugin stops, closing connections...
+
+2013-09-12 17:08:58,446 - [INFO] - from application in ForkJoinPool-1-worker-15 
+ReactiveMongo Connections stopped. [Success(Closed)]
+
+2013-09-12 17:08:58,466 - [DEBUG] - from play in play-internal-execution-context-1 
+Plugin [play.api.cache.EhCachePlugin] is disabled
+
+2013-09-12 17:08:58,482 - [INFO] - from application in play-internal-execution-context-1 
+ReactiveMongoPlugin starting...
+
+2013-09-12 17:08:58,483 - [INFO] - from application in play-internal-execution-context-1 
+ReactiveMongoPlugin successfully started with db 'media-monkey'! Servers:
+		[localhost:27017]
+
+2013-09-12 17:08:58,514 - [INFO] - from play in play-internal-execution-context-1 
+Application started (Dev)
+
+2013-09-12 17:08:58,539 - [ERROR] - from reactivemongo.core.actors.MongoDBSystem in reactivemongo-akka.actor.default-dispatcher-2 
+The entire node set is unreachable, is there a network problem?
+
+2013-09-12 17:08:58,575 - [ERROR] - from reactivemongo.core.actors.MongoDBSystem in reactivemongo-akka.actor.default-dispatcher-4 
+The entire node set is unreachable, is there a network problem?
+
+2013-09-12 17:08:58,576 - [ERROR] - from reactivemongo.core.actors.MongoDBSystem in reactivemongo-akka.actor.default-dispatcher-4 
+The entire node set is unreachable, is there a network problem?
+
+2013-09-12 17:08:58,631 - [DEBUG] - from application in play-akka.actor.default-dispatcher-45 
+Index page shown for 50 customers.
+
+2013-09-12 17:09:40,521 - [INFO] - from application in play-internal-execution-context-4 
+Application shutdown...
+
+2013-09-12 17:09:40,521 - [INFO] - from application in play-internal-execution-context-4 
+ReactiveMongoPlugin stops, closing connections...
+
+2013-09-12 17:09:40,534 - [INFO] - from application in ForkJoinPool-1-worker-15 
+ReactiveMongo Connections stopped. [Success(Closed)]
+
+2013-09-12 17:09:40,556 - [DEBUG] - from play in play-internal-execution-context-4 
+Plugin [play.api.cache.EhCachePlugin] is disabled
+
+2013-09-12 17:09:40,570 - [INFO] - from application in play-internal-execution-context-4 
+ReactiveMongoPlugin starting...
+
+2013-09-12 17:09:40,571 - [INFO] - from application in play-internal-execution-context-4 
+ReactiveMongoPlugin successfully started with db 'media-monkey'! Servers:
+		[localhost:27017]
+
+2013-09-12 17:09:40,601 - [INFO] - from play in play-internal-execution-context-4 
+Application started (Dev)
+
+2013-09-12 17:09:40,636 - [DEBUG] - from application in play-akka.actor.default-dispatcher-51 
+Index page shown for 50 customers.
+
+2013-09-12 17:09:54,641 - [INFO] - from application in play-internal-execution-context-5 
+Application shutdown...
+
+2013-09-12 17:09:54,641 - [INFO] - from application in play-internal-execution-context-5 
+ReactiveMongoPlugin stops, closing connections...
+
+2013-09-12 17:09:54,654 - [INFO] - from application in ForkJoinPool-1-worker-15 
+ReactiveMongo Connections stopped. [Success(Closed)]
+
+2013-09-12 17:09:54,675 - [DEBUG] - from play in play-internal-execution-context-5 
+Plugin [play.api.cache.EhCachePlugin] is disabled
+
+2013-09-12 17:09:54,689 - [INFO] - from application in play-internal-execution-context-5 
+ReactiveMongoPlugin starting...
+
+2013-09-12 17:09:54,690 - [INFO] - from application in play-internal-execution-context-5 
+ReactiveMongoPlugin successfully started with db 'media-monkey'! Servers:
+		[localhost:27017]
+
+2013-09-12 17:09:54,722 - [INFO] - from play in play-internal-execution-context-5 
+Application started (Dev)
+
+2013-09-12 17:09:54,752 - [DEBUG] - from application in play-akka.actor.default-dispatcher-45 
+Index page shown for 50 customers.
+
+2013-09-12 17:10:05,559 - [INFO] - from application in play-internal-execution-context-8 
+Application shutdown...
+
+2013-09-12 17:10:05,568 - [INFO] - from application in play-internal-execution-context-8 
+ReactiveMongoPlugin stops, closing connections...
+
+2013-09-12 17:10:05,581 - [INFO] - from application in ForkJoinPool-1-worker-15 
+ReactiveMongo Connections stopped. [Success(Closed)]
+
+2013-09-12 17:10:05,601 - [DEBUG] - from play in play-internal-execution-context-8 
+Plugin [play.api.cache.EhCachePlugin] is disabled
+
+2013-09-12 17:10:05,609 - [INFO] - from application in play-internal-execution-context-8 
+ReactiveMongoPlugin starting...
+
+2013-09-12 17:10:05,610 - [INFO] - from application in play-internal-execution-context-8 
+ReactiveMongoPlugin successfully started with db 'media-monkey'! Servers:
+		[localhost:27017]
+
+2013-09-12 17:10:05,642 - [INFO] - from play in play-internal-execution-context-8 
+Application started (Dev)
+
+2013-09-12 17:10:05,677 - [DEBUG] - from application in play-akka.actor.default-dispatcher-45 
+Index page shown for 50 customers.
+
+2013-09-12 17:12:31,111 - [INFO] - from application in play-internal-execution-context-1 
+Application shutdown...
+
+2013-09-12 17:12:31,111 - [INFO] - from application in play-internal-execution-context-1 
+ReactiveMongoPlugin stops, closing connections...
+
+2013-09-12 17:12:31,167 - [INFO] - from application in ForkJoinPool-1-worker-15 
+ReactiveMongo Connections stopped. [Success(Closed)]
+
+2013-09-12 17:12:31,186 - [DEBUG] - from play in play-internal-execution-context-1 
+Plugin [play.api.cache.EhCachePlugin] is disabled
+
+2013-09-12 17:12:31,218 - [INFO] - from application in play-internal-execution-context-1 
+ReactiveMongoPlugin starting...
+
+2013-09-12 17:12:31,219 - [INFO] - from application in play-internal-execution-context-1 
+ReactiveMongoPlugin successfully started with db 'media-monkey'! Servers:
+		[localhost:27017]
+
+2013-09-12 17:12:31,255 - [INFO] - from play in play-internal-execution-context-1 
+Application started (Dev)
+
+2013-09-12 17:12:31,302 - [DEBUG] - from application in play-akka.actor.default-dispatcher-64 
+Index page shown for 50 customers.
+
+2013-09-12 17:14:30,486 - [INFO] - from application in play-internal-execution-context-5 
+Application shutdown...
+
+2013-09-12 17:14:30,486 - [INFO] - from application in play-internal-execution-context-5 
+ReactiveMongoPlugin stops, closing connections...
+
+2013-09-12 17:14:30,498 - [INFO] - from application in ForkJoinPool-1-worker-15 
+ReactiveMongo Connections stopped. [Success(Closed)]
+
+2013-09-12 17:14:30,518 - [DEBUG] - from play in play-internal-execution-context-5 
+Plugin [play.api.cache.EhCachePlugin] is disabled
+
+2013-09-12 17:14:30,525 - [INFO] - from application in play-internal-execution-context-5 
+ReactiveMongoPlugin starting...
+
+2013-09-12 17:14:30,526 - [INFO] - from application in play-internal-execution-context-5 
+ReactiveMongoPlugin successfully started with db 'media-monkey'! Servers:
+		[localhost:27017]
+
+2013-09-12 17:14:30,556 - [INFO] - from play in play-internal-execution-context-5 
+Application started (Dev)
+
+2013-09-12 17:14:30,582 - [DEBUG] - from application in play-akka.actor.default-dispatcher-64 
+Index page shown for 50 customers.
+
+2013-09-12 17:14:40,738 - [INFO] - from application in play-internal-execution-context-4 
+Application shutdown...
+
+2013-09-12 17:14:40,738 - [INFO] - from application in play-internal-execution-context-4 
+ReactiveMongoPlugin stops, closing connections...
+
+2013-09-12 17:14:40,753 - [INFO] - from application in ForkJoinPool-1-worker-15 
+ReactiveMongo Connections stopped. [Success(Closed)]
+
+2013-09-12 17:14:40,770 - [DEBUG] - from play in play-internal-execution-context-4 
+Plugin [play.api.cache.EhCachePlugin] is disabled
+
+2013-09-12 17:14:40,777 - [INFO] - from application in play-internal-execution-context-4 
+ReactiveMongoPlugin starting...
+
+2013-09-12 17:14:40,778 - [INFO] - from application in play-internal-execution-context-4 
+ReactiveMongoPlugin successfully started with db 'media-monkey'! Servers:
+		[localhost:27017]
+
+2013-09-12 17:14:40,807 - [INFO] - from play in play-internal-execution-context-4 
+Application started (Dev)
+
+2013-09-12 17:14:40,836 - [DEBUG] - from application in play-akka.actor.default-dispatcher-74 
+Index page shown for 50 customers.
+
+2013-09-12 17:15:04,866 - [INFO] - from application in play-internal-execution-context-4 
+Application shutdown...
+
+2013-09-12 17:15:04,867 - [INFO] - from application in play-internal-execution-context-4 
+ReactiveMongoPlugin stops, closing connections...
+
+2013-09-12 17:15:04,902 - [INFO] - from application in ForkJoinPool-1-worker-15 
+ReactiveMongo Connections stopped. [Success(Closed)]
+
+2013-09-12 17:15:04,920 - [DEBUG] - from play in play-internal-execution-context-4 
+Plugin [play.api.cache.EhCachePlugin] is disabled
+
+2013-09-12 17:15:04,927 - [INFO] - from application in play-internal-execution-context-4 
+ReactiveMongoPlugin starting...
+
+2013-09-12 17:15:04,928 - [INFO] - from application in play-internal-execution-context-4 
+ReactiveMongoPlugin successfully started with db 'media-monkey'! Servers:
+		[localhost:27017]
+
+2013-09-12 17:15:04,958 - [INFO] - from play in play-internal-execution-context-4 
+Application started (Dev)
+
+2013-09-12 17:15:04,983 - [DEBUG] - from application in play-akka.actor.default-dispatcher-67 
+Index page shown for 50 customers.
+
+2013-09-12 17:16:02,459 - [INFO] - from application in play-internal-execution-context-2 
+Application shutdown...
+
+2013-09-12 17:16:02,459 - [INFO] - from application in play-internal-execution-context-2 
+ReactiveMongoPlugin stops, closing connections...
+
+2013-09-12 17:16:02,520 - [INFO] - from application in ForkJoinPool-1-worker-15 
+ReactiveMongo Connections stopped. [Success(Closed)]
+
+2013-09-12 17:16:02,538 - [DEBUG] - from play in play-internal-execution-context-2 
+Plugin [play.api.cache.EhCachePlugin] is disabled
+
+2013-09-12 17:16:02,545 - [INFO] - from application in play-internal-execution-context-2 
+ReactiveMongoPlugin starting...
+
+2013-09-12 17:16:02,546 - [INFO] - from application in play-internal-execution-context-2 
+ReactiveMongoPlugin successfully started with db 'media-monkey'! Servers:
+		[localhost:27017]
+
+2013-09-12 17:16:02,579 - [INFO] - from play in play-internal-execution-context-2 
+Application started (Dev)
+
+2013-09-12 17:16:02,606 - [DEBUG] - from application in play-akka.actor.default-dispatcher-81 
+Index page shown for 50 customers.
+
+2013-09-12 17:17:05,507 - [INFO] - from application in play-internal-execution-context-6 
+Application shutdown...
+
+2013-09-12 17:17:05,508 - [INFO] - from application in play-internal-execution-context-6 
+ReactiveMongoPlugin stops, closing connections...
+
+2013-09-12 17:17:05,520 - [INFO] - from application in ForkJoinPool-1-worker-15 
+ReactiveMongo Connections stopped. [Success(Closed)]
+
+2013-09-12 17:17:05,539 - [DEBUG] - from play in play-internal-execution-context-6 
+Plugin [play.api.cache.EhCachePlugin] is disabled
+
+2013-09-12 17:17:05,546 - [INFO] - from application in play-internal-execution-context-6 
+ReactiveMongoPlugin starting...
+
+2013-09-12 17:17:05,547 - [INFO] - from application in play-internal-execution-context-6 
+ReactiveMongoPlugin successfully started with db 'media-monkey'! Servers:
+		[localhost:27017]
+
+2013-09-12 17:17:05,577 - [INFO] - from play in play-internal-execution-context-6 
+Application started (Dev)
+
+2013-09-12 17:17:05,609 - [DEBUG] - from application in play-akka.actor.default-dispatcher-88 
+Index page shown for 50 customers.
+
+2013-09-12 17:17:25,260 - [INFO] - from application in play-internal-execution-context-6 
+Application shutdown...
+
+2013-09-12 17:17:25,261 - [INFO] - from application in play-internal-execution-context-6 
+ReactiveMongoPlugin stops, closing connections...
+
+2013-09-12 17:17:25,284 - [INFO] - from application in ForkJoinPool-1-worker-15 
+ReactiveMongo Connections stopped. [Success(Closed)]
+
+2013-09-12 17:17:25,301 - [DEBUG] - from play in play-internal-execution-context-6 
+Plugin [play.api.cache.EhCachePlugin] is disabled
+
+2013-09-12 17:17:25,308 - [INFO] - from application in play-internal-execution-context-6 
+ReactiveMongoPlugin starting...
+
+2013-09-12 17:17:25,309 - [INFO] - from application in play-internal-execution-context-6 
+ReactiveMongoPlugin successfully started with db 'media-monkey'! Servers:
+		[localhost:27017]
+
+2013-09-12 17:17:25,339 - [INFO] - from play in play-internal-execution-context-6 
+Application started (Dev)
+
+2013-09-12 17:17:25,349 - [ERROR] - from reactivemongo.core.actors.MongoDBSystem in reactivemongo-akka.actor.default-dispatcher-6 
+The entire node set is unreachable, is there a network problem?
+
+2013-09-12 17:17:25,351 - [ERROR] - from reactivemongo.core.actors.MongoDBSystem in reactivemongo-akka.actor.default-dispatcher-6 
+The entire node set is unreachable, is there a network problem?
+
+2013-09-12 17:17:25,354 - [ERROR] - from reactivemongo.core.actors.MongoDBSystem in reactivemongo-akka.actor.default-dispatcher-2 
+The entire node set is unreachable, is there a network problem?
+
+2013-09-12 17:17:25,354 - [ERROR] - from reactivemongo.core.actors.MongoDBSystem in reactivemongo-akka.actor.default-dispatcher-2 
+The entire node set is unreachable, is there a network problem?
+
+2013-09-12 17:17:27,757 - [DEBUG] - from application in play-akka.actor.default-dispatcher-98 
+Index page shown for 50 customers.
+
+2013-09-12 17:17:58,598 - [INFO] - from application in play-internal-execution-context-2 
+Application shutdown...
+
+2013-09-12 17:17:58,598 - [INFO] - from application in play-internal-execution-context-2 
+ReactiveMongoPlugin stops, closing connections...
+
+2013-09-12 17:17:58,610 - [INFO] - from application in ForkJoinPool-1-worker-15 
+ReactiveMongo Connections stopped. [Success(Closed)]
+
+2013-09-12 17:17:58,625 - [DEBUG] - from play in play-internal-execution-context-2 
+Plugin [play.api.cache.EhCachePlugin] is disabled
+
+2013-09-12 17:17:58,656 - [INFO] - from application in play-internal-execution-context-2 
+ReactiveMongoPlugin starting...
+
+2013-09-12 17:17:58,657 - [INFO] - from application in play-internal-execution-context-2 
+ReactiveMongoPlugin successfully started with db 'media-monkey'! Servers:
+		[localhost:27017]
+
+2013-09-12 17:17:58,684 - [INFO] - from play in play-internal-execution-context-2 
+Application started (Dev)
+
+2013-09-12 17:17:58,712 - [DEBUG] - from application in play-akka.actor.default-dispatcher-92 
+Index page shown for 50 customers.
+
+2013-09-12 17:18:16,809 - [INFO] - from application in play-internal-execution-context-6 
+Application shutdown...
+
+2013-09-12 17:18:16,809 - [INFO] - from application in play-internal-execution-context-6 
+ReactiveMongoPlugin stops, closing connections...
+
+2013-09-12 17:18:16,854 - [INFO] - from application in ForkJoinPool-1-worker-15 
+ReactiveMongo Connections stopped. [Success(Closed)]
+
+2013-09-12 17:18:16,869 - [DEBUG] - from play in play-internal-execution-context-6 
+Plugin [play.api.cache.EhCachePlugin] is disabled
+
+2013-09-12 17:18:16,874 - [INFO] - from application in play-internal-execution-context-6 
+ReactiveMongoPlugin starting...
+
+2013-09-12 17:18:16,875 - [INFO] - from application in play-internal-execution-context-6 
+ReactiveMongoPlugin successfully started with db 'media-monkey'! Servers:
+		[localhost:27017]
+
+2013-09-12 17:18:16,903 - [INFO] - from play in play-internal-execution-context-6 
+Application started (Dev)
+
+2013-09-12 17:18:16,938 - [DEBUG] - from application in play-akka.actor.default-dispatcher-103 
+Index page shown for 50 customers.
+
+2013-09-12 17:18:59,888 - [INFO] - from application in play-internal-execution-context-8 
+Application shutdown...
+
+2013-09-12 17:18:59,888 - [INFO] - from application in play-internal-execution-context-8 
+ReactiveMongoPlugin stops, closing connections...
+
+2013-09-12 17:18:59,912 - [INFO] - from application in ForkJoinPool-1-worker-15 
+ReactiveMongo Connections stopped. [Success(Closed)]
+
+2013-09-12 17:18:59,925 - [DEBUG] - from play in play-internal-execution-context-8 
+Plugin [play.api.cache.EhCachePlugin] is disabled
+
+2013-09-12 17:18:59,931 - [INFO] - from application in play-internal-execution-context-8 
+ReactiveMongoPlugin starting...
+
+2013-09-12 17:18:59,932 - [INFO] - from application in play-internal-execution-context-8 
+ReactiveMongoPlugin successfully started with db 'media-monkey'! Servers:
+		[localhost:27017]
+
+2013-09-12 17:18:59,961 - [INFO] - from play in play-internal-execution-context-8 
+Application started (Dev)
+
+2013-09-12 17:18:59,996 - [DEBUG] - from application in play-akka.actor.default-dispatcher-101 
+Index page shown for 50 customers.
+
+2013-09-12 17:19:01,096 - [DEBUG] - from application in play-akka.actor.default-dispatcher-115 
+Index page shown for 50 customers.
+
+2013-09-12 17:19:37,032 - [INFO] - from application in play-internal-execution-context-4 
+Application shutdown...
+
+2013-09-12 17:19:37,033 - [INFO] - from application in play-internal-execution-context-4 
+ReactiveMongoPlugin stops, closing connections...
+
+2013-09-12 17:19:37,048 - [INFO] - from application in ForkJoinPool-1-worker-15 
+ReactiveMongo Connections stopped. [Success(Closed)]
+
+2013-09-12 17:19:37,077 - [DEBUG] - from play in play-internal-execution-context-4 
+Plugin [play.api.cache.EhCachePlugin] is disabled
+
+2013-09-12 17:19:37,083 - [INFO] - from application in play-internal-execution-context-4 
+ReactiveMongoPlugin starting...
+
+2013-09-12 17:19:37,084 - [INFO] - from application in play-internal-execution-context-4 
+ReactiveMongoPlugin successfully started with db 'media-monkey'! Servers:
+		[localhost:27017]
+
+2013-09-12 17:19:37,112 - [INFO] - from play in play-internal-execution-context-4 
+Application started (Dev)
+
+2013-09-12 17:19:37,175 - [DEBUG] - from application in play-akka.actor.default-dispatcher-118 
+Index page shown for 50 customers.
+
+2013-09-12 17:20:12,728 - [INFO] - from application in play-internal-execution-context-8 
+Application shutdown...
+
+2013-09-12 17:20:12,729 - [INFO] - from application in play-internal-execution-context-8 
+ReactiveMongoPlugin stops, closing connections...
+
+2013-09-12 17:20:12,742 - [INFO] - from application in ForkJoinPool-1-worker-15 
+ReactiveMongo Connections stopped. [Success(Closed)]
+
+2013-09-12 17:20:12,761 - [DEBUG] - from play in play-internal-execution-context-8 
+Plugin [play.api.cache.EhCachePlugin] is disabled
+
+2013-09-12 17:20:12,766 - [INFO] - from application in play-internal-execution-context-8 
+ReactiveMongoPlugin starting...
+
+2013-09-12 17:20:12,767 - [INFO] - from application in play-internal-execution-context-8 
+ReactiveMongoPlugin successfully started with db 'media-monkey'! Servers:
+		[localhost:27017]
+
+2013-09-12 17:20:12,797 - [INFO] - from play in play-internal-execution-context-8 
+Application started (Dev)
+
+2013-09-12 17:20:12,803 - [ERROR] - from reactivemongo.core.actors.MongoDBSystem in reactivemongo-akka.actor.default-dispatcher-4 
+The entire node set is unreachable, is there a network problem?
+
+2013-09-12 17:20:12,809 - [ERROR] - from reactivemongo.core.actors.MongoDBSystem in reactivemongo-akka.actor.default-dispatcher-5 
+The entire node set is unreachable, is there a network problem?
+
+2013-09-12 17:20:12,822 - [DEBUG] - from application in play-akka.actor.default-dispatcher-126 
+Index page shown for 50 customers.
+
+2013-09-12 17:20:37,318 - [INFO] - from application in play-internal-execution-context-7 
+Application shutdown...
+
+2013-09-12 17:20:37,318 - [INFO] - from application in play-internal-execution-context-7 
+ReactiveMongoPlugin stops, closing connections...
+
+2013-09-12 17:20:37,332 - [INFO] - from application in ForkJoinPool-1-worker-15 
+ReactiveMongo Connections stopped. [Success(Closed)]
+
+2013-09-12 17:20:37,348 - [DEBUG] - from play in play-internal-execution-context-7 
+Plugin [play.api.cache.EhCachePlugin] is disabled
+
+2013-09-12 17:20:37,354 - [INFO] - from application in play-internal-execution-context-7 
+ReactiveMongoPlugin starting...
+
+2013-09-12 17:20:37,355 - [INFO] - from application in play-internal-execution-context-7 
+ReactiveMongoPlugin successfully started with db 'media-monkey'! Servers:
+		[localhost:27017]
+
+2013-09-12 17:20:37,387 - [INFO] - from play in play-internal-execution-context-7 
+Application started (Dev)
+
+2013-09-12 17:20:37,395 - [ERROR] - from reactivemongo.core.actors.MongoDBSystem in reactivemongo-akka.actor.default-dispatcher-6 
+The entire node set is unreachable, is there a network problem?
+
+2013-09-12 17:20:37,411 - [DEBUG] - from application in play-akka.actor.default-dispatcher-130 
+Index page shown for 50 customers.
+
+2013-09-12 17:21:16,286 - [INFO] - from application in play-internal-execution-context-8 
+Application shutdown...
+
+2013-09-12 17:21:16,287 - [INFO] - from application in play-internal-execution-context-8 
+ReactiveMongoPlugin stops, closing connections...
+
+2013-09-12 17:21:16,298 - [INFO] - from application in ForkJoinPool-1-worker-15 
+ReactiveMongo Connections stopped. [Success(Closed)]
+
+2013-09-12 17:21:16,313 - [DEBUG] - from play in play-internal-execution-context-8 
+Plugin [play.api.cache.EhCachePlugin] is disabled
+
+2013-09-12 17:21:16,318 - [INFO] - from application in play-internal-execution-context-8 
+ReactiveMongoPlugin starting...
+
+2013-09-12 17:21:16,319 - [INFO] - from application in play-internal-execution-context-8 
+ReactiveMongoPlugin successfully started with db 'media-monkey'! Servers:
+		[localhost:27017]
+
+2013-09-12 17:21:16,348 - [INFO] - from play in play-internal-execution-context-8 
+Application started (Dev)
+
+2013-09-12 17:21:16,382 - [DEBUG] - from application in play-akka.actor.default-dispatcher-139 
+Index page shown for 50 customers.
+
+2013-09-12 17:21:32,351 - [INFO] - from application in play-internal-execution-context-5 
+Application shutdown...
+
+2013-09-12 17:21:32,351 - [INFO] - from application in play-internal-execution-context-5 
+ReactiveMongoPlugin stops, closing connections...
+
+2013-09-12 17:21:32,361 - [INFO] - from application in ForkJoinPool-1-worker-15 
+ReactiveMongo Connections stopped. [Success(Closed)]
+
+2013-09-12 17:21:32,377 - [DEBUG] - from play in play-internal-execution-context-5 
+Plugin [play.api.cache.EhCachePlugin] is disabled
+
+2013-09-12 17:21:32,383 - [INFO] - from application in play-internal-execution-context-5 
+ReactiveMongoPlugin starting...
+
+2013-09-12 17:21:32,383 - [INFO] - from application in play-internal-execution-context-5 
+ReactiveMongoPlugin successfully started with db 'media-monkey'! Servers:
+		[localhost:27017]
+
+2013-09-12 17:21:32,443 - [INFO] - from play in play-internal-execution-context-5 
+Application started (Dev)
+
+2013-09-12 17:21:32,538 - [DEBUG] - from application in play-akka.actor.default-dispatcher-143 
+Index page shown for 100 customers.
+
+2013-09-12 17:21:54,738 - [INFO] - from application in play-internal-execution-context-3 
+Application shutdown...
+
+2013-09-12 17:21:54,739 - [INFO] - from application in play-internal-execution-context-3 
+ReactiveMongoPlugin stops, closing connections...
+
+2013-09-12 17:21:54,750 - [INFO] - from application in ForkJoinPool-1-worker-15 
+ReactiveMongo Connections stopped. [Success(Closed)]
+
+2013-09-12 17:21:54,767 - [DEBUG] - from play in play-internal-execution-context-3 
+Plugin [play.api.cache.EhCachePlugin] is disabled
+
+2013-09-12 17:21:54,773 - [INFO] - from application in play-internal-execution-context-3 
+ReactiveMongoPlugin starting...
+
+2013-09-12 17:21:54,774 - [INFO] - from application in play-internal-execution-context-3 
+ReactiveMongoPlugin successfully started with db 'media-monkey'! Servers:
+		[localhost:27017]
+
+2013-09-12 17:21:54,801 - [INFO] - from play in play-internal-execution-context-3 
+Application started (Dev)
+
+2013-09-12 17:21:54,819 - [DEBUG] - from application in play-akka.actor.default-dispatcher-138 
+Index page shown for 0 customers.
+
+2013-09-12 17:22:13,870 - [INFO] - from application in play-internal-execution-context-8 
+Application shutdown...
+
+2013-09-12 17:22:13,870 - [INFO] - from application in play-internal-execution-context-8 
+ReactiveMongoPlugin stops, closing connections...
+
+2013-09-12 17:22:13,914 - [INFO] - from application in ForkJoinPool-1-worker-15 
+ReactiveMongo Connections stopped. [Success(Closed)]
+
+2013-09-12 17:22:13,933 - [DEBUG] - from play in play-internal-execution-context-8 
+Plugin [play.api.cache.EhCachePlugin] is disabled
+
+2013-09-12 17:22:13,939 - [INFO] - from application in play-internal-execution-context-8 
+ReactiveMongoPlugin starting...
+
+2013-09-12 17:22:13,939 - [INFO] - from application in play-internal-execution-context-8 
+ReactiveMongoPlugin successfully started with db 'media-monkey'! Servers:
+		[localhost:27017]
+
+2013-09-12 17:22:13,966 - [INFO] - from play in play-internal-execution-context-8 
+Application started (Dev)
+
+2013-09-12 17:22:13,998 - [DEBUG] - from application in play-akka.actor.default-dispatcher-147 
+Index page shown for 50 customers.
+
+2013-09-12 17:22:33,499 - [INFO] - from application in play-internal-execution-context-5 
+Application shutdown...
+
+2013-09-12 17:22:33,499 - [INFO] - from application in play-internal-execution-context-5 
+ReactiveMongoPlugin stops, closing connections...
+
+2013-09-12 17:22:33,510 - [INFO] - from application in ForkJoinPool-1-worker-15 
+ReactiveMongo Connections stopped. [Success(Closed)]
+
+2013-09-12 17:22:33,524 - [DEBUG] - from play in play-internal-execution-context-5 
+Plugin [play.api.cache.EhCachePlugin] is disabled
+
+2013-09-12 17:22:33,530 - [INFO] - from application in play-internal-execution-context-5 
+ReactiveMongoPlugin starting...
+
+2013-09-12 17:22:33,531 - [INFO] - from application in play-internal-execution-context-5 
+ReactiveMongoPlugin successfully started with db 'media-monkey'! Servers:
+		[localhost:27017]
+
+2013-09-12 17:22:33,559 - [INFO] - from play in play-internal-execution-context-5 
+Application started (Dev)
+
+2013-09-12 17:22:33,584 - [DEBUG] - from application in play-akka.actor.default-dispatcher-151 
+Index page shown for 50 customers.
+
