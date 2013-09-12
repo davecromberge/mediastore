@@ -1,7 +1,6 @@
 @(customers: Seq[Customer])(implicit flash: play.api.mvc.Flash)
 
 @main {
-    
     <h1>Our customers</h1>
 
     @flash.get("success").map { message =>
@@ -25,6 +24,5 @@
           </tr>
         }
       </tbody>
-
     </table>
 }

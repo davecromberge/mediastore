@@ -2,51 +2,49 @@ package repositories
 
 import app.ComponentRegistry
 import models._
+import models.JsonFormats._
 
 import play.api.libs.concurrent.Execution.Implicits._
+import play.api.libs.json._
+import play.modules.reactivemongo.json.collection.JSONCollection
 import reactivemongo.api._ 
-import reactivemongo.bson._
 import reactivemongo.core.commands._
 import scala.concurrent.Future
 
 trait PackageComponent {
-  class PackageRepo extends MongoRepository[Package] with Repository[Package] {
+  class PackageRepo extends MongoRepository[Package] 
+    with Repository[Package] 
+    with ComponentRegistry {
 
-    override val collection = db("packages")
-    override implicit val reader = Package.PackageBSONReader
-    override implicit val writer = Package.PackageBSONWriter
+    override val collection = db.collection[JSONCollection]("packages")
 
     def all: Future[List[Package]] = {
-      val query = BSONDocument()
-      collection.find(query).cursor[Package].toList
+      collection.find(Json.obj())
+                .sort(Json.obj("name" -> 1))
+                .cursor[Package]
+                .toList
     }
 
     def get(id: String): Future[Option[Package]] = {
       require(!id.isEmpty)
-      collection.find(BSONDocument("_id" -> BSONObjectID(id)))
+      collection.find(Json.obj("id" -> id))
                 .one[Package]
     }
 
     def delete(id: String): Future[LastError] = {
       require(!id.isEmpty)
-      collection.remove(BSONDocument("_id" -> BSONObjectID(id)))
+      collection.remove(Json.obj("id" -> id))
     }
 
-    def update(id: String, pack: Package): Future[LastError] = {
-      require(!id.isEmpty)
+    def update(pack: Package): Future[LastError] = {
+      require(!pack.id.isEmpty)
       require(!pack.name.isEmpty)
-
-      val modifier = BSONDocument(
-        "$set" -> BSONDocument(
-            "name" -> BSONString(pack.name)
-        )
-      )
-      collection.update(BSONDocument("_id" -> new BSONObjectID(id)), modifier)
+      collection.update(Json.obj("id" -> pack.id), pack)
     }
 
     def insert(pack: Package): Future[LastError] = {
       require(!pack.name.isEmpty)
-      collection.insert(pack)
+      collection.insert(pack.copy(id = nextId))
     }
   }
 }

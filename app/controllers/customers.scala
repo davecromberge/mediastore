@@ -42,7 +42,7 @@ object Customers extends Controller with ComponentRegistry {
         BadRequest(html.customers.edit(id, formWithErrors)),
       customer => 
         AsyncResult {
-          customerRepo.update(id, customer).map ( _ =>
+          customerRepo.update(customer.copy(id = Some(id))).map ( _ =>
             Home.flashing("success" -> "Customer %s has been updated".format(customer.name))
           )
         }

@@ -42,7 +42,7 @@ object Packages extends Controller with ComponentRegistry {
         BadRequest(html.packages.edit(id, formWithErrors)),
       pack => 
         AsyncResult {
-          packageRepo.update(id, pack).map ( _ =>
+          packageRepo.update(pack).map ( _ =>
             Home.flashing("success" -> "Package %s has been updated".format(pack.name))
           )
         }

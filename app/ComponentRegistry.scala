@@ -4,6 +4,8 @@ import scala.concurrent.{ExecutionContext}
 import core._
 import repositories._
 
+import java.util.UUID
+
 trait ComponentRegistry extends 
    StatisticsComponent with
    AttributeComponent with
@@ -19,4 +21,6 @@ trait ComponentRegistry extends
    val minStringSimilarity = 0.8
    def getCategoryMatcher: CategoricalMetric = OF
    def getSimilarityMatcher: SimilarityMetric = JaroWinkler
+
+   def nextId: Option[String] = Some(UUID.randomUUID.toString.take(8))
 }

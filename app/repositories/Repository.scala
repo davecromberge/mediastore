@@ -1,25 +1,20 @@
 package repositories
 
 import play.api.Play.current
-import play.api.libs.concurrent.Execution.Implicits._
 import play.modules.reactivemongo._
-import reactivemongo.bson._
-import reactivemongo.core.commands.LastError
+import play.modules.reactivemongo.json.collection.JSONCollection
 import scala.concurrent.Future
 
 trait MongoRepository[T] {
-  implicit val reader: BSONDocumentReader[T]
-  implicit val writer: BSONDocumentWriter[T]
-
   val connection = ReactiveMongoPlugin.connection
   val db = ReactiveMongoPlugin.db
-  def collection: reactivemongo.api.Collection
+  def collection: JSONCollection
 }
 
 trait Repository[T] {
   def get(id: String): Future[Option[T]]
   def all: Future[List[T]]
   def delete(id: String): Future[Any]
-  def update(id: String, item: T): Future[Any]
+  def update(item: T): Future[Any]
   def insert(item: T): Future[Any]
 }

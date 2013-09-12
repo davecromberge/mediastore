@@ -2,14 +2,16 @@ package repositories
 
 import app.ComponentRegistry
 import models._
+import models.JsonFormats._
 
 import play.api.Play.current
 import play.api.libs.concurrent.Execution.Implicits._
+import play.api.libs.json._
 import play.modules.reactivemongo._ 
+import play.modules.reactivemongo.json.collection.JSONCollection
 import reactivemongo.api._ 
-import reactivemongo.bson._
 import reactivemongo.core.commands.LastError
-import scala.concurrent.Future
+import scala.concurrent._
 import scala.util.Random
       
 /* Similarity Measures for Categorical Data: A Comparative Evaluation
@@ -43,6 +45,9 @@ trait DataStatistics {
 }
 
 trait StatisticsComponent {
+
+   import scala.concurrent.Future
+
    class StatisticsRepo extends DataStatistics with ComponentRegistry {
       
       lazy val numberOfRecords: Future[Long] = customerRepo.all.map(_.size)
@@ -51,10 +56,11 @@ trait StatisticsComponent {
       def getFrequency(attr: Attribute, value: Option[String]): Future[Long] = {
         require(!attr.code.isEmpty)
 
-        customerRepo.collection.find(BSONDocument("attributes.value" -> new BSONString(value.getOrElse(""))))
-                    .cursor[BSONDocument]
+       /* customerRepo.collection.find(Json.obj("attributes.value" -> value.getOrElse("")))
+                    .cursor[Customer]
                     .toList
-                    .map(_.size)
+                    .map(_.size) */ 
+        future { 2 }
       }
  
       def getSampleSize(attr: Attribute): Future[Long] = {
