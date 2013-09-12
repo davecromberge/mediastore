@@ -3,15 +3,22 @@ package repositories
 import models._
 import models.JsonFormats._
 import app.ComponentRegistry
-import core.RecordMatcher
+import core.Messages
+import core.RecordMatcherActor
 
+import akka.actor.Actor
+import akka.actor.Props
+import akka.util.Timeout
+import akka.pattern.ask
 import play.api._
 import play.api.Play.current
+import play.api.libs.concurrent.Akka
 import play.api.libs.concurrent.Execution.Implicits._
 import play.api.libs.json._
 import play.modules.reactivemongo.json.collection.JSONCollection
 import reactivemongo.api._ 
 import reactivemongo.core.commands.LastError
+import scala.concurrent.duration._
 import scala.concurrent.Future
 
 /*
@@ -26,6 +33,7 @@ trait CustomerComponent {
     with Repository[Customer] 
     with ComponentRegistry {
 
+    lazy val recordMatcher = Akka.system.actorOf(Props[RecordMatcherActor], name = "matcher")
     override val collection = db.collection[JSONCollection]("customers")
 
     def all: Future[List[Customer]] = {
@@ -46,6 +54,9 @@ trait CustomerComponent {
       collection.remove(Json.obj("id" -> id))
     }
 
+    def deleteAll: Future[LastError] = 
+      collection.remove(Json.obj())
+
     def update(customer: Customer): Future[LastError] = {
       require(!customer.id.isEmpty)
       require(!customer.name.isEmpty)
@@ -61,10 +72,9 @@ trait CustomerComponent {
     }
 
     private def doMatching(customer: Customer): Future[Package] = {
-      val packages = packageRepo.all
-
-      packages.flatMap { packages =>
-        new RecordMatcher(customer, packages).findBestMatch
+      implicit val timeout = Timeout(50.seconds)
+      packageRepo.all.flatMap { packages =>
+        ask(recordMatcher, Messages.Match(customer, packages)).mapTo[Package]
       }
     }
   }

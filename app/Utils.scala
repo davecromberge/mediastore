@@ -23,7 +23,6 @@ object Utils {
 
       for (i <- 0 until futures.size) {
         val f = futures(i)
-        
         f onSuccess { case x =>
           results.set(i, x)
           if (count.decrementAndGet() == 0) {
@@ -32,7 +31,6 @@ object Utils {
             promiseOfResult success resultsArray.toSeq
           }
         }
-        
         f onFailure { case cause =>
             promiseOfResult failure cause
         }

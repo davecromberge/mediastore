@@ -15,6 +15,7 @@ trait Repository[T] {
   def get(id: String): Future[Option[T]]
   def all: Future[List[T]]
   def delete(id: String): Future[Any]
+  def deleteAll: Future[Any]
   def update(item: T): Future[Any]
   def insert(item: T): Future[Any]
 }

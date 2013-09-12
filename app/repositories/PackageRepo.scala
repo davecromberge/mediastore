@@ -36,6 +36,9 @@ trait PackageComponent {
       collection.remove(Json.obj("id" -> id))
     }
 
+    def deleteAll: Future[LastError] = 
+      collection.remove(Json.obj())
+
     def update(pack: Package): Future[LastError] = {
       require(!pack.id.isEmpty)
       require(!pack.name.isEmpty)

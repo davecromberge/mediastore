@@ -5,8 +5,7 @@
 # Home page
 GET     /                           controllers.Customers.index
 
-# Customers list
-GET     /customers                  controllers.Customers.index
+GET     /seed                       controllers.Seeding.index
 
 # Edit existing customer
 GET     /customers/:id              controllers.Customers.edit(id:String)

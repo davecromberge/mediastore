@@ -1,3 +1,5 @@
+package app
+
 import play.api._
 import play.api.Play.{current}
 import play.api.libs.concurrent._
@@ -9,27 +11,30 @@ import app._
 import core._
 import models._
 import repositories._
+
+import akka.actor.Actor
+import akka.actor.Props
+import play.api.libs.concurrent.Akka
 import play.api.libs.concurrent.Execution.Implicits._
 
+object Messages {
+  case object Seed
+}
 
-object Bootstrap extends ComponentRegistry {
-  def init: Unit = {
+class SeedingActor extends Actor 
+    with ComponentRegistry {
+ 
+  def receive = {
+    case Messages.Seed => bootstrap
+  } 
+
+  def bootstrap: Unit = {
     blocking {
-      customerRepo.all.map(customers => 
-                                 customers.map ( customer => 
-                                   customerRepo.delete(customer.id.get))) 
+       customerRepo.deleteAll
+       packageRepo.deleteAll
+       attributeRepo.deleteAll
     }
-
-    blocking {
-      packageRepo.all.map(packages => 
-                                 packages.map ( pack => 
-                                   packageRepo.delete(pack.id.get))) 
-    }
-
-    blocking {
-      attributeRepo.deleteAll
-    }
-
+    
     blocking {
       attributeRepo.insert(Attribute("entity_type", "Entity type", None))
       attributeRepo.insert(Attribute("industry", "Industry", None))
@@ -37,29 +42,18 @@ object Bootstrap extends ComponentRegistry {
       attributeRepo.insert(Attribute("compensation", "Compensation", None))
       attributeRepo.insert(Attribute("location", "Location", None))
     }
-
+    
     blocking {
       generateCustomers(50)
     }
     
+    Logger.info("hello")
+
     blocking {
       generatePackages(30)
     }
-  }
 
-  private def doMatching: Unit = {
-    val packages = packageRepo.all
-
-    customerRepo.all.map { customers =>
-      customers.map { customer =>
-        packages.map { packages =>
-          new RecordMatcher(customer, packages).findBestMatch
-                                               .map { pack =>
-                                                      println("Found package " + pack.name + " for customer " + customer.name)
-                                               }
-        }
-      }
-    }
+    Logger.info("hello")
   }
 
   private def generateCustomers(num: Int): Unit = {
